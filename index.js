@@ -1,7 +1,7 @@
 const express = require("express");
 const WebSocket = require("ws");
 const ws = new WebSocket("wss://test-algobalanz.herokuapp.com/ws/str");
-const checkSymbol = require("./checkSymbol");
+const checkCi = require("./checkCi");
 const app = express();
 
 app.use("/index", (req, res) => {
@@ -36,7 +36,7 @@ app.use("/index", (req, res) => {
                 let currencyUsd = currency;
                 if (currencyUsd === "USD") {
                   if (settlementType === "CI") {
-                    checkSymbol(
+                    checkCi(
                       priceArs,
                       priceUsd,
                       symbolArs,
@@ -45,7 +45,7 @@ app.use("/index", (req, res) => {
                     );
                   }
                   if (settlementType === "24hs") {
-                    checkSymbol(
+                    checkCi(
                       priceArs,
                       priceUsd,
                       symbolArs,
@@ -55,7 +55,7 @@ app.use("/index", (req, res) => {
                   }
 
                   if (settlementType === "48hs") {
-                    checkSymbol(
+                    checkCi(
                       priceArs,
                       priceUsd,
                       symbolArs,
@@ -63,10 +63,10 @@ app.use("/index", (req, res) => {
                       settlementType
                     );
                   }
-                }
+                 }
                 if (currencyUsd === "EXT") {
                   if (settlementType === "CI") {
-                    checkSymbol(
+                    checkCi(
                       priceArs,
                       priceUsd,
                       symbolArs,
@@ -75,21 +75,21 @@ app.use("/index", (req, res) => {
                     );
                   }
                   if (settlementType === "48hs") {
-                    checkSymbol(
+                    checkCi(
                       priceArs,
                       priceUsd,
                       symbolArs,
                       symbolUsd,
                       settlementType
                     );
-                  }
-                }
+                   }
+                 }
               });
             }
           });
         setTimeout(function () {
           return process.exit();
-        }, 8000);
+        }, 10000);
       }
     });
 });
