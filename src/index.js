@@ -65,7 +65,7 @@ app.use("/index", (req, res) => {
                   }
                  }
                 if (currencyUsd === "EXT") {
-                  if (settlementType === "CI")  {
+                  if (settlementType === "CI") {
                     checkCi(
                       priceArs,
                       priceUsd,
